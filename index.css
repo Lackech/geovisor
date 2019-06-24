@@ -1,0 +1,233 @@
+html,
+    body,
+    .map {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #e0e0e0;
+    }
+
+    /*Estilo para dropdown*/
+
+    .dropdown-submenu {
+      position: relative;
+      
+    }
+
+    .dropdown-menu{
+      
+    }
+
+    .muestra{
+      display: block !important;
+    }
+
+    .oculta{
+      display: none !important;
+    }
+
+    .scroll{
+      overflow-y: scroll;
+      height: 300px;
+    }
+    
+
+    .dropdown-submenu>.dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -6px;
+      margin-left: -1px;
+      -webkit-border-radius: 0 6px 6px 6px;
+      -moz-border-radius: 0 6px 6px;
+      border-radius: 0 6px 6px 6px;
+      
+    }
+    /*
+    .dropdown-submenu:hover>.dropdown-menu,.dropdown-submenu:active>.dropdown-menu{
+      display: block;      
+      
+    }*/
+
+    .dropdown-toggle::after {
+      content: none !important;
+    }
+
+    .dropdown-submenu>a:after {
+      display: block;
+      content: " ";
+      float: right;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 5px 0 5px 5px;
+      border-left-color: #ccc;
+      margin-top: 9px;
+      margin-right: -10px;
+      
+    }
+
+    .dropdown-submenu:hover>a:after {
+      border-left-color: #fff;
+    }
+
+    .dropdown-submenu.pull-left {
+      float: none;
+    }
+
+    .dropdown-submenu.pull-left>.dropdown-menu {
+      left: -100%;
+      margin-left: 10px;
+      -webkit-border-radius: 6px 0 6px 6px;
+      -moz-border-radius: 6px 0 6px 6px;
+      border-radius: 6px 0 6px 6px;
+    }
+
+    /*Fin de estilo para dropdown*/
+
+    .fullscreen:-webkit-full-screen {
+      height: 100%;
+    }
+
+    .fullscreen:-ms-fullscreen {
+      height: 100%;
+    }
+
+    .fullscreen:fullscreen {
+      height: 100%;
+    }
+
+    .fullscreen {
+      margin-bottom: 1px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .sidepanel {
+      background: #2b6e99;
+      width: 3%;
+      height: 100%;
+      float: left;
+      transition: 0.5s;
+      min-width: 40px;
+    }
+
+    .site {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      /*overflow: hidden;*/
+    }
+
+    .navbar {
+      padding: 0;      
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-bar{
+      background:#e0e0e0;
+      width: 100%;
+      display: flex;
+      
+    }
+
+    .caja-logo-visor{
+      flex: 1;
+    }
+
+    .logo-bar img{      
+      padding: 12px;
+    }
+
+    .logo-geo img{
+      width: 150px;
+      margin-top: 8px;
+    }
+
+    .logo-minae img{
+      width: 150px;
+    }
+
+    .logo-ceniga img{
+      margin-top: 1px;
+      width: 118px;
+    }
+
+    .info-bar{
+      background: #2b6e99;
+      width: 100%;
+      color: #fff;
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: 4px outset #2b6e99;
+    }
+
+    .info-bar img{
+      width: 25px;
+      margin: 5px;
+    }
+
+    .info-bar a{
+      color: #fff;
+    }
+
+    .info-bar a:hover{
+        color: #fff;
+      }
+
+    .info-bar a:hover{
+      text-decoration: none;
+    }
+
+    #btn-toggle-open {
+      font-size: 40px;
+      padding: 9px;
+    }
+
+    #btn-toggle-close {
+      font-size: 40px;
+      display: none;
+      padding: 9px;
+    }
+
+    .caja-check{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-toggle {
+      padding: 4px;
+      font-size: 25px;
+      color: #e0e0e0;
+    }
+
+    #btn-toggle-capas-icono {}
+
+    #btn-toggle-capas {
+      display: none;
+    }
+
+    
+
+    #sidepanel-item-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;      
+      border: 5px outset #2b6e99;
+    }
+
+    #sidepanel-item-menu:hover {
+        cursor: pointer;
+      }
+
+    #layertree li>span {
+      cursor: pointer;
+    }
+
+    .navbar{
+        padding: 0px !important;
+    }

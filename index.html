@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Mobile full screen example</title>
+    <link rel="stylesheet" href="./src/ol/ol.css" type="text/css">
+    <link rel="stylesheet" href="./index.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
+</head>
+
+<body>
+    <div class="site">
+        <div class="navbar">
+            <div class="logo-bar">
+                <div class="caja-logo-visor">
+                    <a class="logo-geo" href="#"><img src="./resources/geovisor.png"></a>
+                </div>
+                <div class="caja-logos-varios">
+                    <a class="logo-minae" href="#"><img src="./resources/minaeVF.png"></a>
+                    <a class="logo-ceniga" href="#"><img src="./resources/cenigaLogoOficial.png"></a>
+                </div>
+            </div>
+            <div class="info-bar">
+                <a class="metadatos" href="#">METADATOS<img src="./resources/mapita.png"></a>
+            </div>
+        </div>
+        <div id="fullscreen" class="fullscreen">
+            <div id="sidepanel" class="sidepanel">
+
+
+                <div id="sidepanel-item-menu" class="dropdown">
+                    <div onclick="menu()" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                        <i id="btn-toggle-capas-icono" class="material-icons btn-toggle">layers</i>
+                        <span id="btn-toggle-capas" class="btn-toggle">Capas</span>
+                    </div>
+                    <ul id="menu-grande" class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(1)" class="dropdown-item" tabindex="-1" href="#">Capas Base</a>
+                            <ul id="menucito1" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Open Street Maps</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown-divider"></li>
+
+
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(2)" class="dropdown-item" tabindex="-1" href="#">Biodiversidad y Ecosistemas</a>
+                            <ul id="menucito2" class="dropdown-menu scroll">
+
+
+
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Áreas de Conservación</div>
+                                    <fieldset id="layer10">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible10">
+                                                <input id="visible10" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Áreas Silvestres Protegidas</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Corredores Biológicos</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Inventario Nacional de Humedales</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Servicios Ecosistémicos de CR</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Ecorregiones</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Unidades Fitogeográficas</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Zonas de Vida 2008</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Zona Inalienable Ley XIV</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Sitios Ramsar</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Montañas para Costa Rica</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Patrimonio Mundial</div>
+                                    <fieldset id="layer11">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible11">
+                                                <input id="visible11" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(3)" class="dropdown-item" tabindex="-1" href="#">Agua</a>
+                            <ul id="menucito3" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Cuentas Hidrográficas</div>
+                                    <fieldset id="layer20">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible20">
+                                                <input id="visible20" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(4)" class="dropdown-item" tabindex="-1" href="#">Calidad Ambiental</a>
+                            <ul id="menucito4" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Calidad del Aire</div>
+                                    <fieldset id="layer30">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible30">
+                                                <input id="visible30" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Calidad del Agua</div>
+                                    <fieldset id="layer30">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible30">
+                                                <input id="visible30" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Modelo Integral Ambiental</div>
+                                    <fieldset id="layer30">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible30">
+                                                <input id="visible30" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(5)" class="dropdown-item" tabindex="-1" href="#">Cobertura y Uso de la Tierra</a>
+                            <ul id="menucito5" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+                                    <div tabindex="-1">Malla de puntos</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Bosque Maduro 2013</div>
+                                    <fieldset id="layer41">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible41">
+                                                <input id="visible41" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Bosque Deciduo 2013</div>
+                                    <fieldset id="layer42">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible42">
+                                                <input id="visible42" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Bosque de Palma 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Bosque Secundario 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Páramo 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Pastos 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Plantación Forestal 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Manglar 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>No Forestal 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Nubes 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Sombra de Nubes 2013</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Agricultura 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Agua 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Areas Quemadas 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Bosques Secundarios 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Bosque de Palmas 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Forestal 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Café 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Deforestación 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Manglar 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div> Páramo 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Plantaciones Forestales 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Uso Urbano 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>No Forestal 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>No Clasificados 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div>Nubes 2005</div>
+                                    <fieldset id="layer40">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible40">
+                                                <input id="visible40" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+
+
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(6)" class="dropdown-item" tabindex="-1" href="#">Infraestructura</a>
+                            <ul id="menucito6" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Oficinas SINAC</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Oficinas Unidades Hidrológicas</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown-divider"></li>
+
+
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(7)" class="dropdown-item" tabindex="-1" href="#">Guías Cartográficas</a>
+                            <ul id="menucito7" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Guías Hojas Terra 25K</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Guías Hojas Aéreas Terra 40K</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div>Guías Hojas 50K</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown-divider"></li>
+
+
+                        <li class="dropdown-submenu">
+                            <a onclick="mostrar(8)" class="dropdown-item" tabindex="-1" href="#">Economía Ambiental</a>
+                            <ul id="menucito8" class="dropdown-menu scroll">
+                                <li class="dropdown-item">
+
+                                    <div tabindex="-1">Permisos de uso de camaroneras y salineras</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                                <li class="dropdown-item">
+
+                                    <div >Concesiones de Agua</div>
+                                    <fieldset id="layer00">
+                                        <div class="caja-check">
+                                            <label class="checkbox" for="visible00">
+                                                <input id="visible00" class="visible" type="checkbox" /> Habilitar
+                                            </label>
+                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
+                                        </div>
+
+                                    </fieldset>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </ul>
+
+                </div>
+
+                <div id="sidepanel-item-menu">
+                    <i class="material-icons btn-toggle btn-toggle-busqueda-icono">search</i>
+                </div>
+                <div id="sidepanel-item-menu">
+                    <i class="material-icons btn-toggle btn-toggle-mano-icono">pan_tool</i>
+                </div>
+                <div id="sidepanel-item-menu">
+                    <i class="material-icons btn-toggle btn-toggle-ubicacion-icono">location_on</i>
+                </div>
+
+
+            </div>
+            <div id="map" class="map"></div>
+
+        </div>
+        <div id="mouse-position"></div>
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('#layertree li > span').click(function () {
+            $(this).siblings('fieldset').toggle();
+        }).siblings('fieldset').hide();
+
+        function mostrar(i) {
+            
+            var element = document.getElementById("menucito"+i);
+            if(element.classList.contains('muestra')){
+                element.classList.remove("muestra");
+            }else{
+                element.classList.add("muestra");
+            }
+        } 
+
+        function menu(){
+            var element = document.getElementById("menu-grande");
+            if(element.classList.contains('muestra')){
+                element.classList.remove("muestra");
+                element.classList.add("oculta");
+            }else{
+                element.classList.add("muestra");
+                element.classList.remove("oculta");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
