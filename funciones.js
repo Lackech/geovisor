@@ -1,7 +1,3 @@
-// Initialize greeting function
-function greet() {
-    console.log("Hello, World!");
-}
 
 function menu(){
     var element = window.document.getElementById("menu-grande");

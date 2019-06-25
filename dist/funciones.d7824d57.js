@@ -118,11 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"funciones.js":[function(require,module,exports) {
-// Initialize greeting function
-function greet() {
-  console.log("Hello, World!");
-}
-
 function menu() {
   var element = window.document.getElementById("menu-grande");
   console.log("Hello, World!");
@@ -279,7 +274,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50195" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50301" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
