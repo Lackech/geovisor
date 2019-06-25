@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>$('#layertree li > span').click(function () {
+  $(this).siblings('fieldset').toggle();
+}).siblings('fieldset').hide();</script>
 
 <script src="/ol.a2c1b369.js"></script><script src="/geovisor.9ad09f98.js"></script></head>
 
@@ -43,7 +46,7 @@
                     <ul id="menu-grande" class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(1)" class="dropdown-item" tabindex="-1" href="#">Capas Base</a>
+                            <a id="mostrar1" class="dropdown-item" tabindex="-1" href="#">Capas Base</a>
                             <ul id="menucito1" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -66,7 +69,7 @@
 
 
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(2)" class="dropdown-item" tabindex="-1" href="#">Biodiversidad y Ecosistemas</a>
+                            <a id="mostrar2" class="dropdown-item" tabindex="-1" href="#">Biodiversidad y Ecosistemas</a>
                             <ul id="menucito2" class="dropdown-menu scroll">
 
 
@@ -235,7 +238,7 @@
 
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(3)" class="dropdown-item" tabindex="-1" href="#">Agua</a>
+                            <a id="mostrar3" class="dropdown-item" tabindex="-1" href="#">Agua</a>
                             <ul id="menucito3" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -257,7 +260,7 @@
 
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(4)" class="dropdown-item" tabindex="-1" href="#">Calidad Ambiental</a>
+                            <a id="mostrar4" class="dropdown-item" tabindex="-1" href="#">Calidad Ambiental</a>
                             <ul id="menucito4" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -306,7 +309,7 @@
 
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(5)" class="dropdown-item" tabindex="-1" href="#">Cobertura y Uso de la Tierra</a>
+                            <a id="mostrar5" class="dropdown-item" tabindex="-1" href="#">Cobertura y Uso de la Tierra</a>
                             <ul id="menucito5" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
                                     <div tabindex="-1">Malla de puntos</div>
@@ -637,7 +640,7 @@
 
 
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(6)" class="dropdown-item" tabindex="-1" href="#">Infraestructura</a>
+                            <a id="mostrar6" class="dropdown-item" tabindex="-1" href="#">Infraestructura</a>
                             <ul id="menucito6" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -675,7 +678,7 @@
 
 
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(7)" class="dropdown-item" tabindex="-1" href="#">Guías Cartográficas</a>
+                            <a id="mostrar7" class="dropdown-item" tabindex="-1" href="#">Guías Cartográficas</a>
                             <ul id="menucito7" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -727,7 +730,7 @@
 
 
                         <li class="dropdown-submenu">
-                            <a onclick="mostrar(8)" class="dropdown-item" tabindex="-1" href="#">Economía Ambiental</a>
+                            <a id="mostrar8" class="dropdown-item" tabindex="-1" href="#">Economía Ambiental</a>
                             <ul id="menucito8" class="dropdown-menu scroll">
                                 <li class="dropdown-item">
 
@@ -784,34 +787,11 @@
 
 
     <script src="/geovisor.e31bb0bc.js"></script>
+    <script src="/funciones.d7824d57.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>$('#layertree li > span').click(function () {
-  $(this).siblings('fieldset').toggle();
-}).siblings('fieldset').hide();
-
-function mostrar(i) {
-  var element = document.getElementById("menucito" + i);
-
-  if (element.classList.contains('muestra')) {
-    element.classList.remove("muestra");
-  } else {
-    element.classList.add("muestra");
-  }
-}
-
-function menu() {
-  var element = document.getElementById("menu-grande");
-
-  if (element.classList.contains('muestra')) {
-    element.classList.remove("muestra");
-    element.classList.add("oculta");
-  } else {
-    element.classList.add("muestra");
-    element.classList.remove("oculta");
-  }
-}</script>
+    
 </body>
 
 </html>
