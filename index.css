@@ -213,14 +213,14 @@ html,
 
     
 
-    #sidepanel-item-menu {
+    .sidepanel-item-menu {
       display: flex;
       flex-direction: row;
       justify-content: center;      
       border: 5px outset #2b6e99;
     }
 
-    #sidepanel-item-menu:hover {
+    .sidepanel-item-menu:hover {
         cursor: pointer;
       }
 

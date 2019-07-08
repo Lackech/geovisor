@@ -39,14 +39,14 @@
                 </div>
             </div>
             <div class="info-bar">
-                <a class="metadatos" href="#">METADATOS<img src="./resources/mapita.png"></a>
+                <a class="metadatos" href="http://ceniga.sinac.go.cr/geonetwork/srv/eng/main.home">METADATOS<img src="./resources/mapita.png"></a>
             </div>
         </div>
         <div id="fullscreen" class="fullscreen">
             <div id="sidepanel" class="sidepanel">
 
 
-                <div id="sidepanel-item-menu" class="dropdown">
+                <div id="sidepanel-item-menu" class="dropdown sidepanel-item-menu">
                     <div onclick="menu()" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
                         <i id="btn-toggle-capas-icono" class="material-icons btn-toggle">layers</i>
                         <span id="btn-toggle-capas" class="btn-toggle">Capas</span>
@@ -413,19 +413,7 @@
                                         </div>
 
                                     </fieldset>
-                                </li>
-                                <li class="dropdown-item">
-                                    <div>Manglar 2013</div>
-                                    <fieldset id="layer48">
-                                        <div class="caja-check">
-                                            <label class="checkbox" for="visible48">
-                                                <input id="visible48" class="visible" type="checkbox" /> Habilitar
-                                            </label>
-                                            <input class="opacity" type="range" min="0" max="1" step="0.01" />
-                                        </div>
-
-                                    </fieldset>
-                                </li>
+                                </li>                                
                                 <li class="dropdown-item">
                                     <div>No Forestal 2013(Deshabilitada)</div>
                                     <fieldset id="layer49">
@@ -775,14 +763,17 @@
 
                 </div>
 
-                <div id="sidepanel-item-menu">
+                <div class="sidepanel-item-menu">
                     <i class="material-icons btn-toggle btn-toggle-busqueda-icono">search</i>
                 </div>
-                <div id="sidepanel-item-menu">
+                <div class="sidepanel-item-menu">
                     <i class="material-icons btn-toggle btn-toggle-mano-icono">pan_tool</i>
                 </div>
-                <div id="sidepanel-item-menu">
+                <div class="sidepanel-item-menu">
                     <i class="material-icons btn-toggle btn-toggle-ubicacion-icono">location_on</i>
+                </div>
+                <div id="info" class="sidepanel-item-menu">
+                    <i class="material-icons btn-toggle btn-toggle-ubicacion-icono">info</i>
                 </div>
 
 
@@ -790,7 +781,10 @@
             <div id="map" class="map"></div>
 
         </div>
-        <div id="mouse-position"></div>
+        <div id="mouse-position">
+            <div id="dcoords" style="position:absolute;left:150px;bottom:1px;"></div>
+        </div>
+        
     </div>
 
 
