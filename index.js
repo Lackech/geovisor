@@ -12,9 +12,10 @@ import Control from './src/ol/Control/control.js';
 import Pixel from './src/ol/pixel.js';
 import WMSGetFeatureInfo from './src/ol/format/WMSGetFeatureInfo';
 import {toStringHDMS} from './src/ol/coordinate.js';
-import {fromLonLat, toLonLat, transform, addProjection, get} from './src/ol/proj.js';
+import { createProjection ,fromLonLat, toLonLat, transform, addProjection, get} from './src/ol/proj.js';
 import {register} from 'ol/proj/proj4.js';
 import proj4 from 'proj4';
+import {add} from './src/ol/proj/projections.js';
 
 
 
@@ -33,96 +34,96 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:areas_de_conservacion_18', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:areas_de_conservacion_18', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:areas_silvestres_protegidas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:areas_silvestres_protegidas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:corredores_biologicos', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:corredores_biologicos', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:inventario_nacional_humedales', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:inventario_nacional_humedales', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:SE_Nacional', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:SE_Nacional', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:ECORREGIONES', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:ECORREGIONES', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:unidades_fitogeograficas_14', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:unidades_fitogeograficas_14', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:zonas_de_vida_08', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:zonas_de_vida_08', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:zona_inalienable_ley_lxv', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:zona_inalienable_ley_lxv', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:sitios_ramsar', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:sitios_ramsar', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:montañas_costa_rica', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:montañas_costa_rica', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:patrimonio_munidal_natural', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:patrimonio_munidal_natural', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
@@ -132,8 +133,8 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:cuencas_hidrograficas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:cuencas_hidrograficas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
@@ -143,15 +144,15 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:calidad_del_aire_PM10', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:calidad_del_aire_PM10', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'CALIDADAGUA', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -159,8 +160,8 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:mod_ambiental_useg', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:mod_ambiental_useg', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
@@ -170,15 +171,15 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:malla_de_puntos_ifn', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:malla_de_puntos_ifn', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'Maduro', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -186,23 +187,23 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:bosque_deciduo_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:bosque_deciduo_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:bosque_palmas_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:bosque_palmas_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'bosquesecundario', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -210,15 +211,15 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:paramo_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:paramo_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'pastos', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -226,23 +227,23 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:plantaciones_forestales_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:plantaciones_forestales_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:manglar_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:manglar_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'noforestal', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -250,7 +251,7 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'nubes', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -258,31 +259,31 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:sombra_nubes_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:sombra_nubes_13', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:agricultura_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:agricultura_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:agua_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:agua_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'areasquemadas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -290,7 +291,7 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'bosquessecun', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -298,15 +299,15 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:bosque_palmas_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:bosque_palmas_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'bosqueforestal2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -314,55 +315,55 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:cafe_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:cafe_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:deforestacion_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:deforestacion_2005', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:manglar_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:manglar_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:paramo_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:paramo_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:plantaciones_forestales_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:plantaciones_forestales_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:uso_urbano_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:uso_urbano_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'noforestal05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -370,15 +371,15 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:no_clasificado_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:no_clasificado_05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'nubes05', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -389,15 +390,15 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:oficinas_sinac', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:oficinas_sinac', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'oficinashidrologicas', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -408,15 +409,15 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:guia_hojas_terra', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:guia_hojas_terra', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'otras', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -424,7 +425,7 @@ const layers = [
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'otras', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -435,15 +436,15 @@ const layers = [
     layers: [
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-          params: {'LAYERS': 'Ceniga:camaroneras_salineras', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+          params: {'LAYERS': 'CENIGA:camaroneras_salineras', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
         visible: false
       }),
       new TileLayer({
         source: new TileWMS({
-          url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+          url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
           params: {'LAYERS': 'consecionesagua', 'TILED': true, transparent: true, format: 'image/png', projection: new Projection('EPSG:4326'), isBaseLayer: false, visibility: false, singleTile: true, ratio: 1.1},
           serverType: 'geoserver'
         }),
@@ -453,35 +454,39 @@ const layers = [
   })
 ];
 
+let projTica = "EPSG:5367";
+
+
+proj4.defs(projTica,"+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+var projCRTM = new Projection('EPSG:5367');
+register(proj4);
+add(projTica,"+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+var project = get("EPSG:5367");
+//console.log(proj4)
+console.log(project)
+
+var proj4326 = new Projection("EPSG:4326");
+var projgoogle = new Projection("EPSG:900913");
+
+addProjection(projCRTM);
+
 //Coordenadas de puntero
 var mousePositionControl = new MousePosition({
   coordinateFormat: createStringXY(4),
-  projection: 'EPSG:5367',
+  projection: "EPSG:5367",
   // comment the following two lines to have the mouse position
   // be placed within the map.
-  className: 'custom-mouse-position',
-  target: document.getElementById('mouse-position'),
+  //className: 'custom-mouse-position',
+  //target: document.getElementById('mouse-positionn'),
   undefinedHTML: '&nbsp;'
 });
 /*
 var projectionSelect = document.getElementById('projection');
 projectionSelect.addEventListener('change', function(event) {
   mousePositionControl.setProjection(event.target.value);
+  console.log(event.target.value);
 });
-
-
 */
-
-proj4.defs("EPSG:5367","+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
-
-
-register(proj4);
-var proj4326 = new Projection("EPSG:4326");
-var projgoogle = new Projection("EPSG:900913");
-var projCRTM = new Projection({
-  code: 'EPSG:5367',  
-});
-addProjection(projCRTM);
 
 
 
@@ -497,15 +502,17 @@ const view = new View({
 
 
 const map = new Map({
-  //controls: defaultControls().extend([mousePositionControl]),
-  controls: defaultControls().extend([
+  controls: defaultControls().extend([mousePositionControl]),
+  /*controls: defaultControls().extend([
     new ScaleLine()
-  ]),
+  ]),*/
   
   layers: layers,
   target: 'map',
   view: view
 });
+
+
 
 map.on('pointermove', function(e) {
   // When user was dragging map, then coordinates didn't change and there's
@@ -514,24 +521,18 @@ map.on('pointermove', function(e) {
       return;
   }
   
-  var pixel = e.pixel;
-  var coordCR = toLonLat(pixel);
+
+   
 
   var coord = toLonLat(e.coordinate);
-  var lonlat = transform(coord,projgoogle,proj4326);
-  var lonlatPix = transform(e.coordinate,projgoogle,proj4326);
+  var lonlat = transform(coord,projgoogle,proj4326);  
   var coord84 = "<b>WGS84: </b>" + toStringHDMS(lonlat);
+  var punto =  transform(e.coordinate,projgoogle,proj4326);
+
   
-  
-  
-  var punto =  transform(e.coordinate,projgoogle,projCRTM);
-  var puntillo = toLonLat(punto,'EPSG:5367');
-  //var punto = fromLonLat(e.pixel,'EPSG:5367');
-  console.log(coord84);
-  var coordCRTM= "<b>CRTM05 </b>X: " + (punto[0]).toFixed(2) + "  Y: " + (punto[1]).toFixed(2);				
-  
+
+  var coordCRTM= "<b>CRTM05 </b>X: " + (punto[0]).toFixed(2) + "  Y: " + (punto[1]).toFixed(2);
   document.getElementById("dcoords").innerHTML = '<table ><tr><td class="tdcoord">'+ coordCRTM +'</td><td class="tdcoord">'+ coord84 +'</td></tr></table>';
-  
 });
 
 /*

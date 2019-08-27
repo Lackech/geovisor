@@ -68540,35 +68540,39 @@ var _default = Point;
 exports.default = _default;
 },{"mgrs":"node_modules/mgrs/mgrs.js"}],"node_modules/proj4/package.json":[function(require,module,exports) {
 module.exports = {
-  "_from": "proj4@^2.5.0",
+  "_args": [
+    [
+      "proj4@2.5.0",
+      "C:\\Users\\alro9\\Documents\\GitHub\\geovisor"
+    ]
+  ],
+  "_development": true,
+  "_from": "proj4@2.5.0",
   "_id": "proj4@2.5.0",
   "_inBundle": false,
   "_integrity": "sha512-XZTRT7OPdLzgvtTqL8DG2cEj8lYdovztOwiwpwRSYayOty5Ipf3H68dh/fiL+HKDEyetmQSMhkkMGiJoyziz3w==",
   "_location": "/proj4",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "proj4@^2.5.0",
+    "raw": "proj4@2.5.0",
     "name": "proj4",
     "escapedName": "proj4",
-    "rawSpec": "^2.5.0",
+    "rawSpec": "2.5.0",
     "saveSpec": null,
-    "fetchSpec": "^2.5.0"
+    "fetchSpec": "2.5.0"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/proj4/-/proj4-2.5.0.tgz",
-  "_shasum": "e3a88ce7e7a07221aaccbc6760dd2eafee745f03",
-  "_spec": "proj4@^2.5.0",
-  "_where": "C:\\Users\\alro9\\Documents\\geovisor",
+  "_spec": "2.5.0",
+  "_where": "C:\\Users\\alro9\\Documents\\GitHub\\geovisor",
   "author": "",
   "bugs": {
     "url": "https://github.com/proj4js/proj4js/issues"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Mike Adair",
@@ -68600,7 +68604,6 @@ module.exports = {
     "mgrs": "1.0.0",
     "wkt-parser": "^1.2.0"
   },
-  "deprecated": false,
   "description": "Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.",
   "devDependencies": {
     "chai": "~4.1.2",
@@ -73389,6 +73392,8 @@ var _proj2 = require("ol/proj/proj4.js");
 
 var _proj3 = _interopRequireDefault(require("proj4"));
 
+var _projections = require("./src/ol/proj/projections.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var wmsSource = new _TileWMS.default({
@@ -73407,9 +73412,9 @@ var layers = [new _layer.Tile({
   //Layer 10
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:areas_de_conservacion_18',
+        'LAYERS': 'CENIGA:areas_de_conservacion_18',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73424,9 +73429,25 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:areas_silvestres_protegidas',
+        'LAYERS': 'CENIGA:areas_silvestres_protegidas',
+        'TILED': true,
+        transparent: true,
+        format: 'image/png',
+        projection: new _Projection.default('EPSG:4326'),
+        isBaseLayer: false,
+        visibility: false,
+        singleTile: true,
+        ratio: 1.1
+      },
+      serverType: 'geoserver'
+    })
+  }), new _layer.Tile({
+    source: new _TileWMS.default({
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
+      params: {
+        'LAYERS': 'CENIGA:corredores_biologicos',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73441,9 +73462,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:corredores_biologicos',
+        'LAYERS': 'CENIGA:inventario_nacional_humedales',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73458,9 +73479,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:inventario_nacional_humedales',
+        'LAYERS': 'CENIGA:SE_Nacional',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73475,9 +73496,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:SE_Nacional',
+        'LAYERS': 'CENIGA:ECORREGIONES',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73492,9 +73513,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:ECORREGIONES',
+        'LAYERS': 'CENIGA:unidades_fitogeograficas_14',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73509,9 +73530,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:unidades_fitogeograficas_14',
+        'LAYERS': 'CENIGA:zonas_de_vida_08',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73526,9 +73547,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:zonas_de_vida_08',
+        'LAYERS': 'CENIGA:zona_inalienable_ley_lxv',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73543,9 +73564,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:zona_inalienable_ley_lxv',
+        'LAYERS': 'CENIGA:sitios_ramsar',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73560,9 +73581,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:sitios_ramsar',
+        'LAYERS': 'CENIGA:montañas_costa_rica',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73577,26 +73598,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:montañas_costa_rica',
-        'TILED': true,
-        transparent: true,
-        format: 'image/png',
-        projection: new _Projection.default('EPSG:4326'),
-        isBaseLayer: false,
-        visibility: false,
-        singleTile: true,
-        ratio: 1.1
-      },
-      serverType: 'geoserver'
-    }),
-    visible: false
-  }), new _layer.Tile({
-    source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
-      params: {
-        'LAYERS': 'Ceniga:patrimonio_munidal_natural',
+        'LAYERS': 'CENIGA:patrimonio_munidal_natural',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73614,9 +73618,9 @@ var layers = [new _layer.Tile({
   //Layer 20
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:cuencas_hidrograficas',
+        'LAYERS': 'CENIGA:cuencas_hidrograficas',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73634,9 +73638,9 @@ var layers = [new _layer.Tile({
   //Layer 30
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:calidad_del_aire_PM10',
+        'LAYERS': 'CENIGA:calidad_del_aire_PM10',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73651,7 +73655,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'CALIDADAGUA',
         'TILED': true,
@@ -73668,9 +73672,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:mod_ambiental_useg',
+        'LAYERS': 'CENIGA:mod_ambiental_useg',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73688,9 +73692,9 @@ var layers = [new _layer.Tile({
   //Layer 40
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:malla_de_puntos_ifn',
+        'LAYERS': 'CENIGA:malla_de_puntos_ifn',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73705,7 +73709,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'Maduro',
         'TILED': true,
@@ -73722,9 +73726,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:bosque_deciduo_13',
+        'LAYERS': 'CENIGA:bosque_deciduo_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73739,9 +73743,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:bosque_palmas_13',
+        'LAYERS': 'CENIGA:bosque_palmas_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73756,7 +73760,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'bosquesecundario',
         'TILED': true,
@@ -73773,9 +73777,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:paramo_13',
+        'LAYERS': 'CENIGA:paramo_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73790,7 +73794,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'pastos',
         'TILED': true,
@@ -73807,9 +73811,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:plantaciones_forestales_13',
+        'LAYERS': 'CENIGA:plantaciones_forestales_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73824,9 +73828,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:manglar_13',
+        'LAYERS': 'CENIGA:manglar_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73841,7 +73845,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'noforestal',
         'TILED': true,
@@ -73858,7 +73862,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'nubes',
         'TILED': true,
@@ -73875,9 +73879,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:sombra_nubes_13',
+        'LAYERS': 'CENIGA:sombra_nubes_13',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73892,9 +73896,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:agricultura_05',
+        'LAYERS': 'CENIGA:agricultura_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73909,9 +73913,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:agua_2005',
+        'LAYERS': 'CENIGA:agua_2005',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73926,7 +73930,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'areasquemadas',
         'TILED': true,
@@ -73943,7 +73947,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'bosquessecun',
         'TILED': true,
@@ -73960,9 +73964,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:bosque_palmas_05',
+        'LAYERS': 'CENIGA:bosque_palmas_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -73977,7 +73981,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'bosqueforestal2005',
         'TILED': true,
@@ -73994,9 +73998,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:cafe_2005',
+        'LAYERS': 'CENIGA:cafe_2005',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74011,9 +74015,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:deforestacion_2005',
+        'LAYERS': 'CENIGA:deforestacion_2005',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74028,9 +74032,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:manglar_05',
+        'LAYERS': 'CENIGA:manglar_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74045,9 +74049,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:paramo_05',
+        'LAYERS': 'CENIGA:paramo_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74062,9 +74066,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:plantaciones_forestales_05',
+        'LAYERS': 'CENIGA:plantaciones_forestales_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74079,9 +74083,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:uso_urbano_05',
+        'LAYERS': 'CENIGA:uso_urbano_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74096,7 +74100,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'noforestal05',
         'TILED': true,
@@ -74113,9 +74117,9 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:no_clasificado_05',
+        'LAYERS': 'CENIGA:no_clasificado_05',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74130,7 +74134,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'nubes05',
         'TILED': true,
@@ -74150,9 +74154,9 @@ var layers = [new _layer.Tile({
   //Layer 50
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:oficinas_sinac',
+        'LAYERS': 'CENIGA:oficinas_sinac',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74167,7 +74171,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'oficinashidrologicas',
         'TILED': true,
@@ -74187,9 +74191,9 @@ var layers = [new _layer.Tile({
   //Layer 60
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:guia_hojas_terra',
+        'LAYERS': 'CENIGA:guia_hojas_terra',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74204,7 +74208,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'otras',
         'TILED': true,
@@ -74221,7 +74225,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'otras',
         'TILED': true,
@@ -74241,9 +74245,9 @@ var layers = [new _layer.Tile({
   //Layer 70
   layers: [new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
-        'LAYERS': 'Ceniga:camaroneras_salineras',
+        'LAYERS': 'CENIGA:camaroneras_salineras',
         'TILED': true,
         transparent: true,
         format: 'image/png',
@@ -74258,7 +74262,7 @@ var layers = [new _layer.Tile({
     visible: false
   }), new _layer.Tile({
     source: new _TileWMS.default({
-      url: 'http://18.221.165.145:8080/geoserver/Ceniga/wms',
+      url: 'http://18.191.99.184:8080/geoserver/CENIGA/wms',
       params: {
         'LAYERS': 'consecionesagua',
         'TILED': true,
@@ -74274,35 +74278,38 @@ var layers = [new _layer.Tile({
     }),
     visible: false
   })]
-})]; //Coordenadas de puntero
+})];
+var projTica = "EPSG:5367";
+
+_proj3.default.defs(projTica, "+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+
+var projCRTM = new _Projection.default('EPSG:5367');
+(0, _proj2.register)(_proj3.default);
+(0, _projections.add)(projTica, "+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+var project = (0, _proj.get)("EPSG:5367"); //console.log(proj4)
+
+console.log(project);
+var proj4326 = new _Projection.default("EPSG:4326");
+var projgoogle = new _Projection.default("EPSG:900913");
+(0, _proj.addProjection)(projCRTM); //Coordenadas de puntero
 
 var mousePositionControl = new _MousePosition.default({
   coordinateFormat: (0, _coordinate.createStringXY)(4),
-  projection: 'EPSG:5367',
+  projection: "EPSG:5367",
   // comment the following two lines to have the mouse position
   // be placed within the map.
-  className: 'custom-mouse-position',
-  target: document.getElementById('mouse-position'),
+  //className: 'custom-mouse-position',
+  //target: document.getElementById('mouse-positionn'),
   undefinedHTML: '&nbsp;'
 });
 /*
 var projectionSelect = document.getElementById('projection');
 projectionSelect.addEventListener('change', function(event) {
   mousePositionControl.setProjection(event.target.value);
+  console.log(event.target.value);
 });
-
-
 */
-
-_proj3.default.defs("EPSG:5367", "+proj=tmerc +lat_0=0 +lon_0=-84 +k=0.9999 +x_0=500000 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
-
-(0, _proj2.register)(_proj3.default);
-var proj4326 = new _Projection.default("EPSG:4326");
-var projgoogle = new _Projection.default("EPSG:900913");
-var projCRTM = new _Projection.default({
-  code: 'EPSG:5367'
-});
-(0, _proj.addProjection)(projCRTM); //Posicion CR
+//Posicion CR
 
 var costaRicatonLonLat = [-84.9534256, 9.5499180];
 var costaRicaWebMercator = (0, _proj.fromLonLat)(costaRicatonLonLat);
@@ -74311,8 +74318,11 @@ var view = new _View.default({
   zoom: 7.8
 });
 var map = new _Map.default({
-  //controls: defaultControls().extend([mousePositionControl]),
-  controls: (0, _control.defaults)().extend([new _control.ScaleLine()]),
+  controls: (0, _control.defaults)().extend([mousePositionControl]),
+
+  /*controls: defaultControls().extend([
+    new ScaleLine()
+  ]),*/
   layers: layers,
   target: 'map',
   view: view
@@ -74324,16 +74334,10 @@ map.on('pointermove', function (e) {
     return;
   }
 
-  var pixel = e.pixel;
-  var coordCR = (0, _proj.toLonLat)(pixel);
   var coord = (0, _proj.toLonLat)(e.coordinate);
   var lonlat = (0, _proj.transform)(coord, projgoogle, proj4326);
-  var lonlatPix = (0, _proj.transform)(e.coordinate, projgoogle, proj4326);
   var coord84 = "<b>WGS84: </b>" + (0, _coordinate.toStringHDMS)(lonlat);
-  var punto = (0, _proj.transform)(e.coordinate, projgoogle, projCRTM);
-  var puntillo = (0, _proj.toLonLat)(punto, 'EPSG:5367'); //var punto = fromLonLat(e.pixel,'EPSG:5367');
-
-  console.log(coord84);
+  var punto = (0, _proj.transform)(e.coordinate, projgoogle, proj4326);
   var coordCRTM = "<b>CRTM05 </b>X: " + punto[0].toFixed(2) + "  Y: " + punto[1].toFixed(2);
   document.getElementById("dcoords").innerHTML = '<table ><tr><td class="tdcoord">' + coordCRTM + '</td><td class="tdcoord">' + coord84 + '</td></tr></table>';
 });
@@ -74401,7 +74405,7 @@ map.getLayers().forEach(function (layer, i) {
     });
   }
 });
-},{"./src/ol/Map.js":"src/ol/Map.js","./src/ol/View.js":"src/ol/View.js","./src/ol/layer.js":"src/ol/layer.js","./src/ol/source/OSM.js":"src/ol/source/OSM.js","./src/ol/source/TileWMS.js":"src/ol/source/TileWMS.js","./src/ol/proj/Projection.js":"src/ol/proj/Projection.js","./src/ol/control.js":"src/ol/control.js","./src/ol/control/MousePosition.js":"src/ol/control/MousePosition.js","./src/ol/coordinate.js":"src/ol/coordinate.js","./src/ol/Control/control.js":"src/ol/Control/control.js","./src/ol/pixel.js":"src/ol/pixel.js","./src/ol/format/WMSGetFeatureInfo":"src/ol/format/WMSGetFeatureInfo.js","./src/ol/proj.js":"src/ol/proj.js","ol/proj/proj4.js":"node_modules/ol/proj/proj4.js","proj4":"node_modules/proj4/lib/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/ol/Map.js":"src/ol/Map.js","./src/ol/View.js":"src/ol/View.js","./src/ol/layer.js":"src/ol/layer.js","./src/ol/source/OSM.js":"src/ol/source/OSM.js","./src/ol/source/TileWMS.js":"src/ol/source/TileWMS.js","./src/ol/proj/Projection.js":"src/ol/proj/Projection.js","./src/ol/control.js":"src/ol/control.js","./src/ol/control/MousePosition.js":"src/ol/control/MousePosition.js","./src/ol/coordinate.js":"src/ol/coordinate.js","./src/ol/Control/control.js":"src/ol/Control/control.js","./src/ol/pixel.js":"src/ol/pixel.js","./src/ol/format/WMSGetFeatureInfo":"src/ol/format/WMSGetFeatureInfo.js","./src/ol/proj.js":"src/ol/proj.js","ol/proj/proj4.js":"node_modules/ol/proj/proj4.js","proj4":"node_modules/proj4/lib/index.js","./src/ol/proj/projections.js":"src/ol/proj/projections.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -74429,7 +74433,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49378" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51398" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
